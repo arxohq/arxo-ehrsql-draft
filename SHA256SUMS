@@ -7,8 +7,10 @@ be6258b60e00c727f2ce0e6dec6a660ec8231b751b4314b963c755e697916e79  ./adapters/0.8
 60345aafe7472fc367e4c0be7d424c7c217f6896779404906e931070cf5d5598  ./answers/untrained-4b.jsonl
 0c9dad16c6db771d06d14cbd559612832ff13685524abfe07c4de7e166bbb194  ./eval/0.8b.json
 f56f2f69b40406983e473388353bd20ce2a5386e57f05db631cd21a5be1faa3a  ./eval/4b.json
+0cf9cdb8e10b765ae0f7b93d268b8a756deaa055ecbefa9462c0fa0dfd34cd3a  ./eval/ehrsql-evaluate-0.8b.json
+c26c683a15b8c61ffdbfd59803f31a639681c1e89932ff46fe698c6dd184caad  ./eval/ehrsql-evaluate-4b.json
 db8d36ed8933058291b634d59d7dd415976812098667c7c3c12ae18cbd3a9303  ./helm/stats-0.8b.json
 25facfd204524665f69ee67da2b32aa6e95475f0cc4e0febfad4f7ccde0ac20f  ./helm/stats-4b.json
-660cab282ada6f608e95dbd839acd72d843d9f83e63681ce6c0fd75d3fb48071  ./README.md
+9241c2086ae534eb61ebe51e3e192bb8aad99580aa9747e049b02c0a38aea809  ./README.md
 f3a808dcb67c9988d65e84ac6f719a6880a016bd0f2a5ad9a39f12c40ec3ea1c  ./release/v0.1/materia-0.8b-ehrsql.safetensors
 c75ce26152755d3d9a36e7c426ad0449c4d75907a6bf3f6613f748e05da45b04  ./release/v0.1/materia-4b-ehrsql.safetensors

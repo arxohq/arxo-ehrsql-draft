@@ -27,6 +27,18 @@ MedHELM evaluates on the validation and test splits of EHRSQL together.
 
 Share of answers that execute without an error: 99.8% for the 4B model, 99.6% for the 0.8B model.
 
+## With EHRSQL's own evaluation script
+
+EHRSQL ships its own evaluation script, `evaluate.py`. It processes every query before running it: for example, it rewrites `%y` to `%Y` and fills in the normal ranges of vital signs. MedHELM runs the queries as written. On the same 1,959 questions and the same answers, `evaluate.py` of [glee4810/EHRSQL](https://github.com/glee4810/EHRSQL) at commit `01241a3c55` gives:
+
+| Model | Execution accuracy (`recall_exec`) |
+|---|---|
+| Arxo Materia EHRSQL 0.1 (4B) | 84.3% |
+| Arxo Materia EHRSQL 0.1 (0.8B) | 83.0% |
+| Qwen3.5-4B, no training | 21.1% |
+
+The script ran unmodified on the validation and test files of EHRSQL. The model's query is the text inside the `<sql>` tags. The MedHELM leaderboard uses MedHELM's evaluator, so the comparison with the leaderboard stays with the 67.5% figure.
+
 ## Arxo Materia EHRSQL 0.1 (0.8B)
 
 Arxo Materia EHRSQL 0.1 (0.8B), `Arxo-Materia-0.8B-EHRSQL-0.1`, is the same model built on Qwen3.5-0.8B. With a fifth of the parameters it scores 13 questions fewer than the 4B model.
@@ -82,7 +94,7 @@ EHRSQL builds its training, validation and test questions from the same set of q
 
 - No validation or test question was used to train the model. The two splits were opened only to count the overlap above and to measure.
 - No prompt was tuned: the prompt and the generation settings are MedHELM's.
-- No score of an Arxo Materia model comes from our own grader: each is MedHELM's `ehr_sql_execution_accuracy`.
+- No score of an Arxo Materia model comes from our own grader: each is MedHELM's `ehr_sql_execution_accuracy` or `recall_exec` of EHRSQL's `evaluate.py`.
 
 ## Scope of the numbers
 
@@ -104,7 +116,8 @@ Arxo is in early access: to run it on your own data, or to verify the result ind
 |---|---|
 | `answers/4b.jsonl`, `answers/0.8b.jsonl` | Model outputs for the 1,959 evaluation questions, keyed by the question id of EHRSQL |
 | `answers/untrained-4b.jsonl`, `answers/untrained-0.8b.jsonl` | Outputs of the base models without training |
-| `eval/` | Per-question scores of the two Arxo Materia models from MedHELM's evaluator |
+| `eval/4b.json`, `eval/0.8b.json` | Per-question scores of the two Arxo Materia models from MedHELM's evaluator |
+| `eval/ehrsql-evaluate-4b.json`, `eval/ehrsql-evaluate-0.8b.json` | Output of EHRSQL's `evaluate.py` for the two models |
 | `helm/` | `stats.json` written by `helm-run` for the two Arxo Materia models |
 | `adapters/` and the Release `v0.1` | Adapter configs and LoRA weights: about 300 MB for the 4B model, about 100 MB for the 0.8B model |
 | `SHA256SUMS` | Checksums of every file, weights included |
