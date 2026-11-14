@@ -2,7 +2,7 @@
 
 EHRSQL asks a model to answer a clinician's question about hospital records by writing one SQL query against the eICU database: lab results, prescriptions, diagnoses, costs, lengths of stay. MedHELM uses it as its benchmark for querying patient records.
 
-Arxo Materia EHRSQL 0.1, `Arxo-Materia-4B-EHRSQL-0.1`, is a 4B model based on Qwen3.5-4B. It reads the database schema and the question and writes the query on its own. It is the second Arxo Materia release, after [Arxo Materia 0.1 on MedCalc-Bench](https://github.com/arxohq/arxo-medcalc-bench).
+Arxo Materia EHRSQL 0.1, `Arxo-Materia-4B-EHRSQL-0.1`, is a 4B model based on Qwen3.5-4B. It reads the database schema and the question and writes the query on its own. It is the second Arxo Materia release, after [Arxo Materia 0.1 on MedCalc-Bench](https://github.com/arxohq/arxo-medcalc-bench). The models are on Hugging Face: [arxohq/Arxo-Materia-4B-EHRSQL-0.1](https://huggingface.co/arxohq/Arxo-Materia-4B-EHRSQL-0.1) and [arxohq/Arxo-Materia-0.8B-EHRSQL-0.1](https://huggingface.co/arxohq/Arxo-Materia-0.8B-EHRSQL-0.1).
 
 On the 1,959 evaluation questions of EHRSQL as MedHELM runs it, scored by MedHELM's own evaluator:
 
@@ -94,7 +94,7 @@ The evaluator compares result rows for exact equality, so a query that sums deci
 
 ## Reproducing the result
 
-The adapters are in the Release `v0.1`, the model outputs and per-question scores in `answers/` and `eval/`. To measure a model yourself, merge the adapter into the base model, serve it with thinking disabled and run `helm-run --run-entries "ehr_sql:model=<your deployment>"` from PacificAI/medhelm.
+The quickest way to try a model is Hugging Face, where each model card has a ready example: [the 4B model](https://huggingface.co/arxohq/Arxo-Materia-4B-EHRSQL-0.1) and [the 0.8B model](https://huggingface.co/arxohq/Arxo-Materia-0.8B-EHRSQL-0.1). The adapters are also in the Release `v0.1` here, with the model outputs and per-question scores in `answers/` and `eval/`. To measure a model yourself, merge the adapter into the base model, serve it with thinking disabled and run `helm-run --run-entries "ehr_sql:model=<your deployment>"` from PacificAI/medhelm.
 
 Arxo is in early access: to run it on your own data, or to verify the result independently, write to hi@arxo.io.
 
